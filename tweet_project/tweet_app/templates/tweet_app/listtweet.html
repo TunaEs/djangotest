@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+    
+{% block content  %}
+        {% for tweet in tweets  %}
+            <div class="card" style="">
+                <div class="card-header">
+                Tweet
+                </div>
+                <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>{{tweet.message}} </p>
+                    <footer class="blockquote-footer">{{tweet.username}}</footer>
+                </blockquote>
+                </div>
+                {% if tweet.username == user %}
+                <a href="{% url 'tweet_app:deletetweet' id=tweet.id %}" class="btn btn-danger">delete</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    {% endblock  %}
